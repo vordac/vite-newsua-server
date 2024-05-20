@@ -6,7 +6,7 @@ class Article {
         this.comments = comments;
         this.content = content;
         this.preview = preview;
-        this.publishTime = publishTime;
+        this.publishTime = publishTime.toDate();
         this.rating = rating;
         this.title = title;
         this.userReactions = userReactions;

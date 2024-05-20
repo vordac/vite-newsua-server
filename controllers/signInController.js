@@ -1,6 +1,7 @@
 const admin = require('../services/firebase-admin.js');
 const User = require('../models/userModel.js');
 
+
 const signin = async (req, res) => {
     const { email, password } = req.body;
 
@@ -22,13 +23,8 @@ const signin = async (req, res) => {
             });
         }
 
-        // Create a custom token for the user
-        const idToken = await admin.auth().createCustomToken(userRecord.uid);
+        res.json({ user });
 
-        res.send({
-            message: 'Signin successful',
-            idToken,
-        });
     } catch (error) {
         res.status(500).send({
             error: error.message,
