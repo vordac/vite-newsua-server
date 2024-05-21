@@ -48,7 +48,6 @@ exports.getArticles = async (req, res) => {
                 articlesList.push(article);
             });
         }
-
         res.json(articlesList);
     } catch (error) {
         console.error(error);

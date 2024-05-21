@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const articlesController = require('./controllers/articlesController');
-// const readController = require('./controllers/readController');
+const readController = require('./controllers/readController.js');
 const signUpController = require('./controllers/signUpController');
 
 const app = express();
@@ -17,7 +17,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/articles', articlesController.getArticles);
-// app.get('/read', readController.read);
+app.get('/read', readController.read);
 app.post('/signup', signUpController.signup);
 
 app.listen(PORT, () => {
