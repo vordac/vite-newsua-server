@@ -1,8 +1,11 @@
-
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const articlesController = require('./controllers/articlesController');
+// const articlesController = require('./controllers/articlesController');
+const gridArticlesController = require('./controllers/gridArticlesController.js');
+const listArticlesController = require('./controllers/listArticlesController.js');
+const categoryArticlesController = require('./controllers/categoryArticlesController.js');
+const authorArticlesController = require('./controllers/authorArticlesController.js');
 const readController = require('./controllers/readController.js');
 const signUpController = require('./controllers/signUpController');
 
@@ -16,7 +19,10 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.get('/articles', articlesController.getArticles);
+app.get('/articles-grid', gridArticlesController.getArticlesGrid);
+app.get('/articles-list', listArticlesController.getArticlesList);
+app.get('/category', categoryArticlesController.getArticlesCategory);
+app.get('/author', authorArticlesController.getArticlesAuthor);
 app.get('/read', readController.read);
 app.post('/signup', signUpController.signup);
 

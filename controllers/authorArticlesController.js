@@ -1,18 +1,19 @@
 const Article = require('../models/articleModel');
 const admin = require('firebase-admin');
 
-exports.getArticles = async (req, res) => {
+exports.getArticlesAuthor = async (req, res) => {
     try {
         const db = admin.firestore();
         const articlesRef = db.collection('articles');
         let articlesSnapshot;
         let articlesList = [];
 
-        if (req.query.category) {
-            const category = req.query.category;
+        if (req.query.author) {
+            const author = req.query.author;
             articlesSnapshot = await articlesRef
-                .where('category', '==', category)
+                .where('author', '==', author)
                 .orderBy(req.query.sortingType, req.query.sortingDirection)
+                .limit(32)
                 .get();
             articlesSnapshot.forEach((doc) => {
                 const articleData = doc.data();
@@ -33,8 +34,9 @@ exports.getArticles = async (req, res) => {
             });
         } else {
             articlesSnapshot = await articlesRef
-                .orderBy(req.query.sortingType, req.query.sortingDirection)
-                .get();
+            .orderBy(req.query.sortingType, req.query.sortingDirection)
+            .limit(32)
+            .get();
             articlesSnapshot.forEach((doc) => {
                 const articleData = doc.data();
                 const article = new Article(
