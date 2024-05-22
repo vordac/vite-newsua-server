@@ -35,7 +35,7 @@ exports.getArticlesGrid = async (req, res) => {
         } else {
             articlesSnapshot = await articlesRef
             .orderBy(req.query.sortingType, req.query.sortingDirection)
-            .limit(20)
+            .limit(6)
             .get();
             articlesSnapshot.forEach((doc) => {
                 const articleData = doc.data();

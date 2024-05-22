@@ -25,7 +25,7 @@ const read = async (req, res) => {
             articleData.userReactions,
             articleData.views
         );
-
+        console.log(article);
         res.json(article);
     } catch (error) {
         console.error(error);
