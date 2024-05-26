@@ -7,6 +7,7 @@ const listArticlesController = require('./controllers/listArticlesController.js'
 const categoryArticlesController = require('./controllers/categoryArticlesController.js');
 const authorArticlesController = require('./controllers/authorArticlesController.js');
 const viewsIncrementController = require('./controllers/viewsIncrementController.js');
+const articlesController = require('./controllers/articlesController.js');
 const readController = require('./controllers/readController.js');
 const signUpController = require('./controllers/signUpController');
 
@@ -34,6 +35,7 @@ app.get('/author', authorArticlesController.getArticlesAuthor);
 app.get('/read', readController.read);
 app.post('/signup', signUpController.signup);
 app.put('/views', viewsIncrementController.viewsIncrement);
+app.get('/all', articlesController.getArticles);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

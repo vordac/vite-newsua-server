@@ -10,7 +10,6 @@ exports.getArticles = async (req, res) => {
 
         if (req.query.category) {
             const category = req.query.category;
-            console.log("category: " + category);
             articlesSnapshot = await articlesRef
                 .where('category', '==', category)
                 .orderBy(req.query.sortingType, req.query.sortingDirection)
