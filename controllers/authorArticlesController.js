@@ -7,7 +7,6 @@ exports.getArticlesAuthor = async (req, res) => {
         const articlesRef = db.collection('articles');
         let articlesSnapshot;
         let articlesList = [];
-
         if (req.query.author) {
             const author = req.query.author;
             articlesSnapshot = await articlesRef
