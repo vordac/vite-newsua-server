@@ -15,9 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
-
 app.use(express.json());
-
 
 app.get('/articles-grid', gridArticlesController.getArticlesGrid);
 app.get('/articles-list', listArticlesController.getArticlesList);
