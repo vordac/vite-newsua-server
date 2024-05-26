@@ -18,6 +18,7 @@ app.use(cors());
 
 app.use(express.json());
 
+
 app.get('/articles-grid', gridArticlesController.getArticlesGrid);
 app.get('/articles-list', listArticlesController.getArticlesList);
 app.get('/category', categoryArticlesController.getArticlesCategory);
