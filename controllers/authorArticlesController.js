@@ -11,6 +11,7 @@ exports.getArticlesAuthor = async (req, res) => {
             const author = req.query.author;
             articlesSnapshot = await articlesRef
                 .where('author', '==', author)
+                .where('status', '==', 'published')
                 .orderBy(req.query.sortingType, req.query.sortingDirection)
                 .limit(32)
                 .get();
@@ -33,6 +34,7 @@ exports.getArticlesAuthor = async (req, res) => {
             });
         } else {
             articlesSnapshot = await articlesRef
+            .where('status', '==', 'published')
             .orderBy(req.query.sortingType, req.query.sortingDirection)
             .limit(32)
             .get();

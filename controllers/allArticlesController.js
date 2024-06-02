@@ -11,6 +11,7 @@ exports.getArticles = async (req, res) => {
         if (req.query.category) {
             const category = req.query.category;
             articlesSnapshot = await articlesRef
+                .where('status', '==', 'published')
                 .where('category', '==', category)
                 .orderBy(req.query.sortingType, req.query.sortingDirection)
                 .get();
@@ -33,6 +34,7 @@ exports.getArticles = async (req, res) => {
             });
         } else {
             articlesSnapshot = await articlesRef
+                .where('status', '==', 'published')
                 .orderBy(req.query.sortingType, req.query.sortingDirection)
                 .get();
             articlesSnapshot.forEach((doc) => {

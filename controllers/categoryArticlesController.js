@@ -12,6 +12,7 @@ exports.getArticlesCategory = async (req, res) => {
             const category = req.query.category;
             articlesSnapshot = await articlesRef
                 .where('category', '==', category)
+                .where('status', '==', 'published')
                 .orderBy(req.query.sortingType, req.query.sortingDirection)
                 .limit(32)
                 .get();
@@ -34,6 +35,7 @@ exports.getArticlesCategory = async (req, res) => {
             });
         } else {
             articlesSnapshot = await articlesRef
+            .where('status', '==', 'published')
             .orderBy(req.query.sortingType, req.query.sortingDirection)
             .limit(32)
             .get();
