@@ -35,6 +35,8 @@ const unblockUserController = require('./controllers/unblockUserController.js');
 const setModeratorController = require('./controllers/setModeratorController.js');
 const setAuthorController = require('./controllers/setAuthorController.js');
 
+const isUserBlockedController = require('./controllers/isUserBlockedController.js');
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -74,6 +76,8 @@ app.put('/admin-set-author', setAuthorController.setAuthor);
 app.put('/admin-set-status-published', setStatusPublishedController.setStatus);
 app.put('/admin-set-status-moderated', setStatusModeratedController.setStatus);
 app.put('/admin-set-status-rejected', setStatusRejectedController.setStatus);
+
+app.get('/is-user-blocked', isUserBlockedController.isUserBlocked);
 
 
 app.listen(PORT, () => {

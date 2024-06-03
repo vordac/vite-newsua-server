@@ -7,7 +7,6 @@ const getUserNickname = async (req, res) => {
 
         if (userDoc.exists) {
             res.json({ username: userDoc.data().username });
-            console.log(userDoc.data().username);
         } else {
             res.status(404).json({ message: 'User not found' });
         }
