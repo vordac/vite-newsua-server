@@ -17,6 +17,13 @@ const articlesPublishedController = require('./controllers/articlesPublishedCont
 // admin controllers
 const getAuthorsController = require('./controllers/getAuthorsController.js');
 const getModeratorsController = require('./controllers/getModeratorsController.js');
+const getPublishedArticlesController = require('./controllers/getPublishedArticlesController.js');
+const getModeratedArticlesController = require('./controllers/getModeratedArticlesController.js');
+const getRejectedArticlesController = require('./controllers/getRejectedArticlesController.js');
+const setStatusPublishedController = require('./controllers/setStatusPublishedController.js');
+const setStatusModeratedController = require('./controllers/setStatusPublishedController.js');
+const setStatusRejectedController = require('./controllers/setStatusPublishedController.js');
+
 
 const blockUserController = require('./controllers/blockUserController.js');
 const unblockUserController = require('./controllers/unblockUserController.js');
@@ -48,13 +55,18 @@ app.get('/my-news-published', articlesPublishedController.getArticlesPublished);
 // admin
 app.get('/admin-get-authors', getAuthorsController.getAuthors);
 app.get('/admin-get-moderators', getModeratorsController.getModerators);
-// app.get('/admin-get-published');
-// app.get('/admin-get-moderated');
-// app.get('/admin-get-rejected');
+app.get('/admin-get-published', getPublishedArticlesController.getPublishedArticles);
+app.get('/admin-get-moderated', getModeratedArticlesController.getModeratedArticles);
+app.get('/admin-get-rejected', getRejectedArticlesController.getRejectedArticles);
+
 app.put('/admin-block-user', blockUserController.blockUser);
 app.put('/admin-unblock-user', unblockUserController.unblockUser);
 app.put('/admin-set-moderator', setModeratorController.setModerator);
 app.put('/admin-set-author', setAuthorController.setAuthor);
+app.put('/admin-set-status-published', setStatusPublishedController.setStatus);
+app.put('/admin-set-status-moderated', setStatusModeratedController.setStatus);
+app.put('/admin-set-status-rejected', setStatusRejectedController.setStatus);
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
