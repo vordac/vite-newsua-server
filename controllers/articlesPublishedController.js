@@ -9,7 +9,11 @@ exports.getArticlesPublished = async (req, res) => {
         let articlesList = [];
 
         const author = req.query.userNickname;
+        if (!author) {
+            return res.status(400).json({ message: 'Missing userNickname query parameter' });
+        }
         articlesSnapshot = await articlesRef
+            .where('status', '==', 'published')
             .where('author', '==', author)
             .get();
         articlesSnapshot.forEach((doc) => {
